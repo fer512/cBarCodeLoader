@@ -1,0 +1,64 @@
+<p-growl [(value)]="msgs"></p-growl>
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-button label="Exportar" (onClick)="exportar($event)" icon="fa fa-check"></p-button>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-6">
+        <div class="ui-g-12">
+          <div class="ui-g-5">
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="30" pInputText [(ngModel)]="nombreFamilia">
+              <label for="float-input">Familia:</label>
+            </span>
+          </div>
+          <div class="ui-g-1">
+            <button id="float-btn" type="button" style="height: 34px;" [disabled]="disableFamily()" (click)="addFamilia()" pButton icon="pi pi-plus" label="Nuevo"></button>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <p-table [value]="familias">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Familia</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-f>
+              <tr (click)="familiaSeleccionada = f">
+                <td>{{f.nombre}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+      <div class="ui-g-6">
+        <div class="ui-g-12">
+          <p-autoComplete [(ngModel)]="product" [disabled]="familiaSeleccionada == null" [suggestions]="products" [forceSelection]="true"
+            (completeMethod)="search($event)" field="code" [size]="30" placeholder="Countries" (onSelect)="select($event)"
+            [minLength]="1"></p-autoComplete>
+        </div>
+        <div class="ui-g-12" *ngIf="familiaSeleccionada != null">
+          <p-table [value]="familiaSeleccionada.products">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+              <tr>
+                <td>{{product.code}}</td>
+                <td>{{product.Descripcion}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="ui-g-12">
+    Footer
+  </div>
+</div>
