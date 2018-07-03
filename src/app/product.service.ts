@@ -10,7 +10,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<any>('codigos-productos.json')
+    return this.http.get<any>('data.json')
       .toPromise()
       .then(res => <Product[]>res.data)
       .then(data => { return data; });
