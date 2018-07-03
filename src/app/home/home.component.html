@@ -10,18 +10,18 @@
           <div class="ui-g-5">
             <span class="ui-float-label">
               <input id="float-input" type="text" size="30" pInputText [(ngModel)]="nombreFamilia">
-              <label for="float-input">Familia:</label>
+              <label for="float-input">Nuevo Hogar:</label>
             </span>
           </div>
           <div class="ui-g-1">
-            <button id="float-btn" type="button" style="height: 34px;" [disabled]="disableFamily()" (click)="addFamilia()" pButton icon="pi pi-plus" label="Nuevo"></button>
+            <button id="float-btn" type="button" style="height: 34px;" [disabled]="disableFamily()" (click)="addFamilia()" pButton icon="pi pi-plus" label=""></button>
           </div>
         </div>
         <div class="ui-g-12">
           <p-table [value]="familias">
             <ng-template pTemplate="header">
               <tr>
-                <th>Familia</th>
+                <th>Hogares</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-f>
